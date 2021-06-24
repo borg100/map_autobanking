@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "test_b_map.h": "c",
+        "test_a_tiles.h": "c"
+    }
+}

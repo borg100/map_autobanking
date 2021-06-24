@@ -1,0 +1,145 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.6 #12439 (MINGW32)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _set_level
+                                     13 	.globl _display_off
+                                     14 	.globl _joypad
+                                     15 	.globl _joy
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 ;--------------------------------------------------------
+                                     20 ; ram data
+                                     21 ;--------------------------------------------------------
+                                     22 	.area _DATA
+      000000                         23 _joy::
+      000000                         24 	.ds 1
+                                     25 ;--------------------------------------------------------
+                                     26 ; ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area _INITIALIZED
+                                     29 ;--------------------------------------------------------
+                                     30 ; absolute external ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area _DABS (ABS)
+                                     33 ;--------------------------------------------------------
+                                     34 ; global & static initialisations
+                                     35 ;--------------------------------------------------------
+                                     36 	.area _HOME
+                                     37 	.area _GSINIT
+                                     38 	.area _GSFINAL
+                                     39 	.area _GSINIT
+                                     40 ;--------------------------------------------------------
+                                     41 ; Home
+                                     42 ;--------------------------------------------------------
+                                     43 	.area _HOME
+                                     44 	.area _HOME
+                                     45 ;--------------------------------------------------------
+                                     46 ; code
+                                     47 ;--------------------------------------------------------
+                                     48 	.area _CODE
+                                     49 ;main.c:20: void main()
+                                     50 ;	---------------------------------
+                                     51 ; Function main
+                                     52 ; ---------------------------------
+      000000                         53 _main::
+                                     54 ;main.c:22: DISPLAY_OFF;
+      000000 CDr00r00                55 	call	_display_off
+                                     56 ;main.c:30: (UINT8)&__bank_test_a_map);
+      000003 06r00                   57 	ld	b, #<(___bank_test_a_map)
+                                     58 ;main.c:29: TEST_A_MAP_DATA,
+                                     59 ;main.c:28: (UINT8)&__bank_test_a_tiles,
+      000005 0Er00                   60 	ld	c, #<(___bank_test_a_tiles)
+                                     61 ;main.c:27: TEST_A_TILE_DATA,
+                                     62 ;main.c:25: TEST_A_MAP_WIDTH,
+      000007 C5                      63 	push	bc
+      000008 33                      64 	inc	sp
+      000009 11r00r00                65 	ld	de, #_TEST_A_MAP_DATA
+      00000C D5                      66 	push	de
+      00000D 79                      67 	ld	a, c
+      00000E F5                      68 	push	af
+      00000F 33                      69 	inc	sp
+      000010 11r00r00                70 	ld	de, #_TEST_A_TILE_DATA
+      000013 D5                      71 	push	de
+      000014 21 14 12                72 	ld	hl, #0x1214
+      000017 E5                      73 	push	hl
+      000018 CDr00r00                74 	call	_set_level
+      00001B E8 08                   75 	add	sp, #8
+                                     76 ;main.c:32: DISPLAY_ON;
+      00001D F0r00                   77 	ldh	a, (_LCDC_REG + 0)
+      00001F F6 80                   78 	or	a, #0x80
+      000021 E0r00                   79 	ldh	(_LCDC_REG + 0), a
+                                     80 ;main.c:33: SHOW_BKG;
+      000023 F0r00                   81 	ldh	a, (_LCDC_REG + 0)
+      000025 F6 01                   82 	or	a, #0x01
+      000027 E0r00                   83 	ldh	(_LCDC_REG + 0), a
+                                     84 ;main.c:35: while (TRUE)
+      000029                         85 00107$:
+                                     86 ;main.c:37: joy = joypad();
+      000029 CDr00r00                87 	call	_joypad
+                                     88 ;setupPair	HL
+      00002C 21r00r00                89 	ld	hl, #_joy
+      00002F 73                      90 	ld	(hl), e
+                                     91 ;main.c:39: if (joy & J_SELECT)
+                                     92 ;setupPair	HL
+      000030 7E                      93 	ld	a, (hl)
+      000031 CB 77                   94 	bit	6, a
+      000033 28 1C                   95 	jr	Z, 00104$
+                                     96 ;main.c:47: (UINT8)&__bank_test_a_map);
+      000035 3Er00                   97 	ld	a, #<(___bank_test_a_map)
+                                     98 ;main.c:46: TEST_A_MAP_DATA,
+                                     99 ;main.c:45: (UINT8)&__bank_test_a_tiles,
+      000037 0Er00                  100 	ld	c, #<(___bank_test_a_tiles)
+                                    101 ;main.c:44: TEST_A_TILE_DATA,
+                                    102 ;main.c:42: TEST_A_MAP_WIDTH,
+      000039 F5                     103 	push	af
+      00003A 33                     104 	inc	sp
+      00003B 11r00r00               105 	ld	de, #_TEST_A_MAP_DATA
+      00003E D5                     106 	push	de
+      00003F 79                     107 	ld	a, c
+      000040 F5                     108 	push	af
+      000041 33                     109 	inc	sp
+      000042 11r00r00               110 	ld	de, #_TEST_A_TILE_DATA
+      000045 D5                     111 	push	de
+      000046 21 14 12               112 	ld	hl, #0x1214
+      000049 E5                     113 	push	hl
+      00004A CDr00r00               114 	call	_set_level
+      00004D E8 08                  115 	add	sp, #8
+      00004F 18 D8                  116 	jr	00107$
+      000051                        117 00104$:
+                                    118 ;main.c:49: else if (joy & J_START)
+      000051 07                     119 	rlca
+      000052 30 D5                  120 	jr	NC, 00107$
+                                    121 ;main.c:57: (UINT8)&__bank_test_b_map);
+      000054 0Er00                  122 	ld	c, #<(___bank_test_b_map)
+                                    123 ;main.c:56: TEST_B_MAP_DATA,
+      000056 11r00r00               124 	ld	de, #_TEST_B_MAP_DATA
+                                    125 ;main.c:55: (UINT8)&__bank_test_b_tiles,
+      000059 06r00                  126 	ld	b, #<(___bank_test_b_tiles)
+                                    127 ;main.c:54: TEST_B_TILE_DATA,
+      00005B 21r00r00               128 	ld	hl, #_TEST_B_TILE_DATA
+                                    129 ;main.c:52: TEST_B_MAP_WIDTH,
+      00005E 79                     130 	ld	a, c
+      00005F F5                     131 	push	af
+      000060 33                     132 	inc	sp
+      000061 D5                     133 	push	de
+      000062 C5                     134 	push	bc
+      000063 33                     135 	inc	sp
+      000064 E5                     136 	push	hl
+      000065 21 14 12               137 	ld	hl, #0x1214
+      000068 E5                     138 	push	hl
+      000069 CDr00r00               139 	call	_set_level
+      00006C E8 08                  140 	add	sp, #8
+                                    141 ;main.c:60: }
+      00006E 18 B9                  142 	jr	00107$
+                                    143 	.area _CODE
+                                    144 	.area _INITIALIZER
+                                    145 	.area _CABS (ABS)
