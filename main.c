@@ -10,27 +10,20 @@
 
 UINT8 joy;
 
-
-extern const void __bank_test_a_map;
-extern const void __bank_test_a_tiles;
-
-extern const void __bank_test_b_map;
-extern const void __bank_test_b_tiles;
-
 void main()
 {
     DISPLAY_OFF;
+    SHOW_BKG;
 
     set_level(
         TEST_A_MAP_WIDTH,
         TEST_A_MAP_HEIGHT,
-        TEST_A_TILE_DATA,
-        (UINT8)&__bank_test_a_tiles,
-        TEST_A_MAP_DATA,
-        (UINT8)&__bank_test_a_map);
+        OFFSET(TEST_A_TILE_DATA),
+        BANK(TEST_A_TILE_DATA),
+        OFFSET(TEST_A_MAP_DATA),
+        BANK(TEST_A_MAP_DATA));
 
     DISPLAY_ON;
-    SHOW_BKG;
 
     while (TRUE)
     {
@@ -41,20 +34,22 @@ void main()
             set_level(
                 TEST_A_MAP_WIDTH,
                 TEST_A_MAP_HEIGHT,
-                TEST_A_TILE_DATA,
-                (UINT8)&__bank_test_a_tiles,
-                TEST_A_MAP_DATA,
-                (UINT8)&__bank_test_a_map);
+                OFFSET(TEST_A_TILE_DATA),
+                BANK(TEST_A_TILE_DATA),
+                OFFSET(TEST_A_MAP_DATA),
+                BANK(TEST_A_MAP_DATA));
         }
         else if (joy & J_START)
         {
             set_level(
                 TEST_B_MAP_WIDTH,
                 TEST_B_MAP_HEIGHT,
-                TEST_B_TILE_DATA,
-                (UINT8)&__bank_test_b_tiles,
-                TEST_B_MAP_DATA,
-                (UINT8)&__bank_test_b_map);
+                OFFSET(TEST_B_TILE_DATA),
+                BANK(TEST_B_TILE_DATA),
+                OFFSET(TEST_B_MAP_DATA),
+                BANK(TEST_B_MAP_DATA));
         }
+
+        wait_vbl_done();
     }
 }
