@@ -1,4 +1,4 @@
-del .\main.gb
+call .\clean.bat
 
 .\map_tool\gb_map_converter.exe -i ..\maps\test_a\test_a.png -o ..\maps\test_a
 .\map_tool\gb_map_converter.exe -i ..\maps\test_b\test_b.png -o ..\maps\test_b

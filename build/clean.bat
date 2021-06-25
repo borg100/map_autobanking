@@ -1,1 +1,9 @@
-del *.rel *.o *.lst *.asm *.sym *.ihx *.map *.sav
+del *.rel
+del *.o
+del *.lst
+del *.asm
+del *.sym
+del *.ihx
+del *.map
+del *.sav
+del *.gb
