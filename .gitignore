@@ -1,3 +1,2 @@
-build/map_tool
-build/*
-!build/*.bat
+obj/
+bin/
