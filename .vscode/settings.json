@@ -1,6 +1,12 @@
 {
     "files.associations": {
         "test_b_map.h": "c",
-        "test_a_tiles.h": "c"
+        "test_a_tiles.h": "c",
+        "village_house_1_map.h": "c",
+        "village_overworld_tiles.h": "c",
+        "village_house_1_tiles.h": "c",
+        "village_house_2_map.h": "c",
+        "village_house_5_tiles.h": "c",
+        "village_house_5_map.h": "c"
     }
 }
