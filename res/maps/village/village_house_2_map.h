@@ -8,7 +8,7 @@
 #define __MAP_VILLAGE_HOUSE_2_MAP_H__
 
 #define VILLAGE_HOUSE_2_MAP_WIDTH 20
-#define VILLAGE_HOUSE_2_MAP_HEIGHT 16
+#define VILLAGE_HOUSE_2_MAP_HEIGHT 18
 
 extern const void __bank_village_house_2_map_data;
 

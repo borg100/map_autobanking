@@ -25,7 +25,8 @@ Map village_overworld = {
     .map_bank = BANK(village_overworld_map_data),
     .width = VILLAGE_OVERWORLD_MAP_WIDTH,
     .height = VILLAGE_OVERWORLD_MAP_HEIGHT,
-    .is_submap = TRUE};
+    .is_submap = TRUE
+};
 
 Map village_house_1 = {
     .tile_data = OFFSET(village_house_1_tile_data),
@@ -34,7 +35,8 @@ Map village_house_1 = {
     .map_bank = BANK(village_house_1_map_data),
     .width = VILLAGE_HOUSE_1_MAP_WIDTH,
     .height = VILLAGE_HOUSE_1_MAP_HEIGHT,
-    .is_submap = FALSE};
+    .is_submap = FALSE
+};
 
 Map village_house_2 = {
     .tile_data = OFFSET(village_house_2_tile_data),
@@ -43,7 +45,8 @@ Map village_house_2 = {
     .map_bank = BANK(village_house_2_map_data),
     .width = VILLAGE_HOUSE_2_MAP_WIDTH,
     .height = VILLAGE_HOUSE_2_MAP_HEIGHT,
-    .is_submap = FALSE};
+    .is_submap = FALSE
+};
 
 Map village_house_3 = {
     .tile_data = OFFSET(village_house_3_tile_data),
@@ -52,7 +55,8 @@ Map village_house_3 = {
     .map_bank = BANK(village_house_3_map_data),
     .width = VILLAGE_HOUSE_3_MAP_WIDTH,
     .height = VILLAGE_HOUSE_3_MAP_HEIGHT,
-    .is_submap = FALSE};
+    .is_submap = FALSE
+};
 
 Map village_house_4 = {
     .tile_data = OFFSET(village_house_4_tile_data),
@@ -61,7 +65,8 @@ Map village_house_4 = {
     .map_bank = BANK(village_house_4_map_data),
     .width = VILLAGE_HOUSE_4_MAP_WIDTH,
     .height = VILLAGE_HOUSE_4_MAP_HEIGHT,
-    .is_submap = FALSE};
+    .is_submap = FALSE
+};
 
 Map village_house_5 = {
     .tile_data = OFFSET(village_house_5_tile_data),
@@ -70,7 +75,8 @@ Map village_house_5 = {
     .map_bank = BANK(village_house_5_map_data),
     .width = VILLAGE_HOUSE_5_MAP_WIDTH,
     .height = VILLAGE_HOUSE_5_MAP_HEIGHT,
-    .is_submap = FALSE};
+    .is_submap = FALSE
+};
 
 void set_banked_bkg_data(UINT8 start, UINT8 count, const void *tile_data, UINT8 bank)
 #ifndef __INTELLISENSE__

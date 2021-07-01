@@ -6,9 +6,6 @@
 #define SIZE(A) (UWORD) & (__SIZE_PREFIX(A))
 #define OFFSET(A) (void *)&(A)
 
-#define MAP_FIXED = 1
-#define MAP_SUBMAP = 2
-
 typedef struct Map
 {
     const void *tile_data;
